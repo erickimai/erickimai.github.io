@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Jornada no BCC</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: var(--secondary-color);
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .trilha-card {
+            background-color: white;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .trilha-card:hover {
+            transform: translateX(5px);
+        }
+        
+        .trilha-card h3 {
+            margin-top: 0;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .plan-steps {
+            counter-reset: step-counter;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .plan-steps li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .plan-steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/api/placeholder/150/150" alt="Minha foto" class="profile-img">
+        <h1>Erick Henrique</h1>
+        <p>Estudante de Ciência da Computação</p>
+    </header>
+    
+    <div class="container">
+        <section class="section">
+            <h2>Sobre Mim</h2>
+            <p>Olá! Sou estudante do curso de Bacharelado em Ciência da Computação. Estou no segundo ano e tenho grande interesse em IA e ciência de dados. Este espaço foi criado para compartilhar minhas reflexões sobre as trilhas do curso e meus planos para os próximos semestres.</p>
+            
+            <div class="highlight">
+                <p>"A tecnologia é melhor quando une as pessoas." — Matt Mullenweg</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Reflexões sobre as Trilhas do BCC</h2>
+            
+            <div class="trilha-card">
+                <h3>Trilha de Desenvolvimento de Software</h3>
+                <p>Conceitos de engenharia de software, paradigmas de programação e desenvolvimento de aplicações.</p>
+            </div>
+            
+            <div class="trilha-card">
+                <h3>Trilha de Ciência de Dados e Inteligência Artificial</h3>
+                <p>Aprender sobre machine learning, análise estatística e processamento de dados.</p>
+            </div>
+            
+            <div class="trilha-card">
+                <h3>Trilha de Teoria da Computação</h3>
+                <p>Compreender algoritmos, complexidade computacional e lógica matemática para resolver problemas complexos.</p>
+            </div>
+            
+            <div class="trilha-card">
+                <h3>Trilha de Sistemas</h3>
+                <p>Arquitetura de computadores, sistemas operacionais e redes.</p>
+            </div>
+        </section>             
+            <p>Você pode encontrar mais detalhes sobre estes e outros projetos no meu <a href="https://github.com/erickimai">GitHub</a>.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/erickimai">GitHub</a>
+            <a href="https://linkedin.com/in/erickimai">LinkedIn</a>
+            <a href="mailto:erick.henrique.rodrigues@usp.br">Email</a>
+        </div>
+    </footer>
+</body>
+</html>
