@@ -11,6 +11,7 @@
             --accent-color: #e74c3c;
             --text-color: #333;
             --light-bg: #f9f9f9;
+            --sistemas-color: #27ae60;
         }
         
         body {
@@ -71,6 +72,11 @@
             transform: translateX(5px);
         }
         
+        .trilha-card.escolhida {
+            border-left-color: var(--sistemas-color);
+            background-color: rgba(39, 174, 96, 0.05);
+        }
+        
         .trilha-card h3 {
             margin-top: 0;
         }
@@ -80,6 +86,14 @@
             border-left: 4px solid var(--primary-color);
             padding: 15px;
             margin: 20px 0;
+        }
+        
+        .highlight-escolha {
+            background-color: rgba(39, 174, 96, 0.1);
+            border-left: 4px solid var(--sistemas-color);
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
         }
         
         .plan-steps {
@@ -162,24 +176,32 @@
         <section class="section">
             <h2>Reflexões sobre as Trilhas do BCC</h2>
             
-            <div class="trilha-card">
-                <h3>Trilha de Desenvolvimento de Software</h3>
+            <div class="trilha-card escolhida">
+                <h3>Trilha de Sistemas de Software</h3>
                 <p>Conceitos de engenharia de software, paradigmas de programação e desenvolvimento de aplicações.</p>
+                <p><strong>Minha opinião:</strong> Considero esta trilha interessante pela sua aplicação prática e pela forma como conecta teoria e desenvolvimento real.</p>
             </div>
             
             <div class="trilha-card">
-                <h3>Trilha de Ciência de Dados e Inteligência Artificial</h3>
-                <p>Aprender sobre machine learning, análise estatística e processamento de dados.</p>
+                <h3>Trilha de Ciência de Dados</h3>
+                <p>Análise estatística, processamento de dados e extração de insights.</p>
+                <p><strong>Minha opinião:</strong> Área impressionante que revela padrões ocultos nos dados. A capacidade de transformar números em conhecimento útil é algo muito relevante.</p>
+            </div>
+            
+            <div class="trilha-card">
+                <h3>Trilha de Inteligência Artificial</h3>
+                <p>Machine learning, redes neurais e sistemas inteligentes.</p>
+                <p><strong>Minha opinião:</strong> Sem dúvida uma das áreas mais revolucionárias da computação. A possibilidade de criar sistemas que aprendem e se adaptam é fascinante e promissora.</p>
             </div>
             
             <div class="trilha-card">
                 <h3>Trilha de Teoria da Computação</h3>
-                <p>Compreender algoritmos, complexidade computacional e lógica matemática para resolver problemas complexos.</p>
+                <p>Algoritmos, complexidade computacional e fundamentos matemáticos.</p>
+                <p><strong>Minha opinião:</strong> Base sólida e essencial para qualquer computeiro. Apesar de desafiadora, proporciona uma compreensão profunda dos fundamentos que sustentam toda a computação.</p>
             </div>
             
-            <div class="trilha-card">
-                <h3>Trilha de Sistemas</h3>
-                <p>Arquitetura de computadores, sistemas operacionais e redes.</p>
+            <div class="highlight-escolha">
+                <p>🎯 <strong>Minha Escolha:</strong> Pretendo seguir a trilha de Sistemas de Software, pois combina perfeitamente meu interesse em desenvolvimento com a possibilidade de criar soluções robustas e escaláveis.</p>
             </div>
         </section>             
             <p>Você pode encontrar mais detalhes sobre estes e outros projetos no meu <a href="https://github.com/erickimai">GitHub</a>.</p>
