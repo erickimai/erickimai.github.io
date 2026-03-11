@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Minha Jornada no BCC</title>
+<title>Erick Henrique | BCC USP</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header>
+
 <h1>Erick Henrique</h1>
 <p>Estudante de Ciência da Computação</p>
+
 </header>
+
+<nav>
+
+<a href="#sobre">Sobre</a>
+<a href="#trilhas">Trilhas do BCC</a>
+<a href="#disciplinas">Disciplinas</a>
+
+</nav>
 
 <div class="container">
 
-<section class="section">
+<section id="sobre">
 
-<h2>Sobre Mim</h2>
+<h2>Sobre mim</h2>
 
 <p>
-Sou estudante de Bacharelado em Ciência da Computação.
-Estou no segundo ano e tenho grande interesse em
-IA e ciência de dados.
+Sou estudante de Ciência da Computação interessado em
+Inteligência Artificial, Ciência de Dados e Engenharia de Software.
 </p>
-
-<div class="highlight">
-"A tecnologia é melhor quando une as pessoas."
-</div>
 
 </section>
 
-<section class="section">
+<section id="trilhas">
 
-<h2>Reflexões sobre as Trilhas</h2>
+<h2>Reflexões sobre as trilhas do BCC</h2>
 
-<div class="trilha-card escolhida">
+<div class="card escolhida">
+
 <h3>Sistemas de Software</h3>
 
 <p>
 Engenharia de software, desenvolvimento de aplicações
-e paradigmas de programação.
+e sistemas escaláveis.
 </p>
 
 </div>
 
-<div class="trilha-card">
+<div class="card">
+
 <h3>Ciência de Dados</h3>
 
 <p>
-Extração de conhecimento a partir de grandes
-volumes de dados.
+Análise de dados e extração de conhecimento.
 </p>
 
 </div>
 
-<div class="trilha-card">
+<div class="card">
+
 <h3>Inteligência Artificial</h3>
 
 <p>
@@ -67,60 +77,50 @@ Machine learning e sistemas inteligentes.
 
 </div>
 
-<div class="trilha-card">
+<div class="card">
+
 <h3>Teoria da Computação</h3>
 
 <p>
-Algoritmos, complexidade computacional e
-fundamentos matemáticos.
+Fundamentos matemáticos da computação.
 </p>
 
 </div>
 
 </section>
 
-<section class="section">
+<section id="disciplinas">
 
-<h2>MAC0470 - Desenvolvimento de Software Livre</h2>
+<h2>Disciplinas</h2>
 
-<div class="week" onclick="toggleWeek(1)">
-Semana 1
-</div>
+<div class="disciplina">
 
-<div id="week1" class="week-content">
-<a href="../MAC0470 - Desenvolvimento de Software Livre/semana1/index.html">
-Abrir atividade da semana 1
+<h3>MAC0102 — Caminhos no BCC</h3>
+
+<a href="MAC0102-Caminhos-no-BCC/index.html">
+Acessar página da disciplina
 </a>
+
 </div>
 
-<div class="week" onclick="toggleWeek(2)">
-Semana 2
+<div class="disciplina">
+
+<h3>MAC0470 — Desenvolvimento de Software Livre</h3>
+
+<button onclick="toggle()">Mostrar semanas</button>
+
+<div id="semanas">
+
+<a href="MAC0470-Desenvolvimento-de-Software-Livre/semana1/index.html">Semana 1</a>
+
+<a href="MAC0470-Desenvolvimento-de-Software-Livre/semana2/index.html">Semana 2</a>
+
+<a href="MAC0470-Desenvolvimento-de-Software-Livre/semana3/index.html">Semana 3</a>
+
+<a href="MAC0470-Desenvolvimento-de-Software-Livre/semana4/index.html">Semana 4</a>
+
 </div>
 
-<div id="week2" class="week-content">
-<a href="../MAC0470 - Desenvolvimento de Software Livre/semana2/index.html">
-Abrir atividade da semana 2
-</a>
-</div>
-
-<div class="week" onclick="toggleWeek(3)">
-Semana 3
-</div>
-
-<div id="week3" class="week-content">
-<a href="../MAC0470 - Desenvolvimento de Software Livre/semana3/index.html">
-Abrir atividade da semana 3
-</a>
-</div>
-
-<div class="week" onclick="toggleWeek(4)">
-Semana 4
-</div>
-
-<div id="week4" class="week-content">
-<a href="../MAC0470 - Desenvolvimento de Software Livre/semana4/index.html">
-Abrir atividade da semana 4
-</a>
 </div>
 
 </section>
@@ -139,4 +139,5 @@ Abrir atividade da semana 4
 <script src="script.js"></script>
 
 </body>
+
 </html>
