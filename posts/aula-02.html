@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 02 — MAC0470/5856</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="prompt">~/mac0470 $</span>
+      <h1>Diário de Bordo</h1>
+      <p class="subtitle">MAC0470/5856 · Desenvolvimento de Software Livre · Prof. Paulo Meirelles</p>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="post-header">
+        <a href="../index.html" class="back-link">← voltar para o índice</a>
+        <div class="post-meta">
+          <span class="date">2025-03-04</span>
+          <span class="tag">aula 02</span>
+        </div>
+        <h1>Aula 02 — VM e o terminal teimoso</h1>
+      </div>
+
+      <div class="post-content">
+
+        <h2># contexto</h2>
+        <p>
+          Segunda aula da disciplina. A expectativa era continuar a configuração do ambiente, desta vez
+          trabalhando com uma máquina virtual — o setup padrão da matéria para garantir que todo mundo
+          parte de um ambiente equivalente.
+        </p>
+
+        <h2># o problema</h2>
+        <p>
+          Aqui surgiu a primeira dificuldade real do semestre: na hora de exibir o terminal dentro da VM,
+          a coisa simplesmente não funcionou como esperado. A interface não estava respondendo direito
+          e eu fiquei um tempinho tentando entender o que estava errado.
+        </p>
+        <p>
+          O drive também precisava ser ativado manualmente, o que não estava documentado de forma óbvia
+          no tutorial. Basicamente: terminal sumido, drive parado, e eu encarando a tela.
+        </p>
+
+        <div class="callout">
+          ⚠️ <strong>Problema encontrado:</strong> terminal não exibindo corretamente na VM +
+          drive não ativado automaticamente.
+        </div>
+
+        <h2># a solução</h2>
+        <p>
+          Recorri à IA para ajudar a diagnosticar o problema. Com as dicas que recebi, consegui identificar
+          o que precisava ser feito para ativar o drive corretamente dentro da VM e, na sequência,
+          o terminal voltou a aparecer sem maiores complicações.
+        </p>
+        <p>
+          No final, tudo resolvido. Não foi uma parada grave — mais um <em>"ah, só precisava fazer isso"</em>
+          do que uma batalha épica — mas foi a primeira vez que precisei de apoio externo para avançar.
+        </p>
+
+        <h2># aprendizado</h2>
+        <p>
+          VMs têm suas próprias particularidades e às vezes o tutorial não cobre tudo. Faz parte.
+          O importante é saber onde buscar ajuda e não travar por muito tempo num mesmo ponto.
+          Próximas aulas provavelmente vão trazer desafios mais interessantes.
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>feito com ☕ e software livre · <a href="https://github.com" target="_blank">github.io</a></p>
+  </footer>
+</body>
+</html>
