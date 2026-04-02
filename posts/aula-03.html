@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 03 — MAC0470/5856</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="prompt">~/mac0470 $</span>
+   
+      <p class="subtitle">MAC0470/5856 · Desenvolvimento de Software Livre · Prof. Paulo Meirelles</p>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="post-header">
+        <a href="../index.html" class="back-link">← voltar para o índice</a>
+        <div class="post-meta">
+          <span class="date">2025-03-11</span>
+          <span class="tag">aula 03</span>
+        </div>
+        <h1>Aula 03 — Explorando modulos</h1>
+      </div>
+
+      <div class="post-content">
+
+        <h2># contexto</h2>
+        <p>
+            Com foco na criação de módulos e configuração de build. A proposta parecia simples à primeira vista 
+            — criar um módulo básico — mas rapidamente percebi que há muitos detalhes importantes por trás desse processo.
+            Comecei entendendo melhor o papel dos módulos no kernel. Achei interessante como eles permitem 
+            adicionar funcionalidades sem precisar recompilar tudo ou reiniciar o sistema.
+             Isso torna o desenvolvimento muito mais flexível, principalmente quando lidamos com drivers ou testes rápidos.
+        </p>
+        <p>
+            Entrei em uma parte mais conceitual (e um pouco mais difícil): a configuração do build com Kconfig e Makefile. 
+            Aqui tive algumas dificuldades pontuais, principalmente para entender como os símbolos de configuração funcionam 
+            e como eles se conectam ao processo de compilação. 
+            Mesmo assim, com paciência, consegui criar a entrada SIMPLE_MOD e integrá-la corretamente ao sistema de build.
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p><a href="https://github.com" target="_blank">github.io</a></p>
+  </footer>
+</body>
+</html>
