@@ -26,9 +26,9 @@
       <div class="post-content">
         <h2># contexto</h2>
         <p>
-          Nas aulas 7 e 8, mergulhamos no subsistema Industrial I/O (IIO) do kernel Linux, usando o driver
+          Nas aulas 7 e 8, trata do subsistema Industrial I/O (IIO) do kernel Linux, usando o driver
           <code>iio_simple_dummy</code> como objeto de estudo. A proposta era entender como drivers de sensores
-          são estruturados — e foi uma das experiências mais interessantes que tive até agora no curso.
+          são estruturados.
         </p>
         <p>
           Minha abordagem foi a que o tutorial sugere: primeiro identificar as funções de inicialização,
@@ -53,8 +53,7 @@
           O campo <code>.scan_index</code> também merece atenção — ele organiza a ordem dos canais
           habilitados dentro do buffer e precisa ser único. Quando vi o valor
           <code>DUMMY_INDEX_VOLTAGE_0</code> ali, precisei ir até o header <code>iio_simple_dummy.h</code>
-          pra entender de onde vinha. Esse tipo de coisa — seguir a trilha pelo código — é algo que estou
-          aprendendo a fazer com mais naturalidade.
+          pra entender de onde vinha.
         </p>
 
         <h2># as funções read_raw e write_raw</h2>
@@ -64,21 +63,6 @@
           para determinar de qual parte do estado interno (<code>iio_dummy_state</code>) extrair o valor.
           O mutex aparece logo na entrada da função, protegendo a leitura do estado.
         </p>
-        <p>
-          A <code>iio_dummy_write_raw()</code> é estruturalmente parecida, mas com uma observação
-          interessante: o mutex só é adquirido no momento de escrever no estado — a validação do tipo
-          de canal acontece antes. Pequeno detalhe, mas que diz muito sobre como pensar criticamente
-          onde começa e termina a seção crítica.
-        </p>
-        <p>
-          Tive um momento de confusão aqui também: por alguns minutos achei que o
-          <code>ret = -EINVAL</code> no <code>default</code> do switch de <code>read_raw</code> era um
-          bug, porque ele não retornava imediatamente. Fui verificar e percebi que o
-          <code>mutex_unlock</code> era centralizado no <code>goto out</code> — o padrão clássico que
-          o próprio tutorial explica. Depois de semanas estudando o <code>guard(mutex)</code>, ver o
-          padrão antigo em ação no código de exemplo foi um belo fechamento de ciclo.
-        </p>
-
         <h2># a função probe</h2>
         <p>
           A <code>iio_dummy_probe()</code> conecta tudo. Ela aloca memória para o <code>iio_dev</code>,
@@ -89,10 +73,7 @@
 
         <h2># conclusão</h2>
         <p>
-          No geral, as aulas 7 e 8 foram densas mas muito recompensadoras. O <code>iio_simple_dummy</code>
-          é um excelente material de estudo justamente porque foi feito pra isso — os comentários no
-          código são excepcionais. No fim, consegui acompanhar tudo e sair com uma visão bem mais clara
-          de como drivers de sensores são construídos no kernel.
+          No geral, as aulas 7 e 8 foram densas mas muito recompensadoras.
         </p>
       </div>
     </article>
