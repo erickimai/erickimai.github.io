@@ -21,13 +21,12 @@
           <span class="date">2025-04-14</span>
           <span class="tag">aula 09/10</span>
         </div>
-        <h1>Aula 09/10 — enviando meu primeiro patch para o kernel Linux</h1>
+        <h1>Enviando meu primeiro patch para o kernel Linux</h1>
       </div>
       <div class="post-content">
         <h2># contexto</h2>
         <p>
-          Essa aula foi sobre colocar a mão na massa de verdade: preparar e enviar um patch para o
-          subsistema IIO do kernel Linux. A mudança em si foi simples — substituir chamadas
+          A mudança em si foi simples — substituir chamadas
           <code>mutex_lock()</code> e <code>mutex_unlock()</code> pelo macro <code>guard(mutex)()</code>
           no driver <code>m62332</code>, usando os Scope-based Cleanup Helpers do kernel.
         </p>
@@ -50,8 +49,7 @@
         <h2># resultado</h2>
         <p>
           O patch passou pelo CI interno do curso sem erros e foi enviado para os mantenedores do
-          subsistema IIO e para a mailing list <code>linux-iio@vger.kernel.org</code>. Primeira
-          contribuição real ao kernel Linux feita.
+          subsistema IIO e para a mailing list <code>linux-iio@vger.kernel.org</code>.
         </p>
       </div>
     </article>
