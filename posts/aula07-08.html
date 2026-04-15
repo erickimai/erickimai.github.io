@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 07/08 — MAC0470/5856</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="prompt">~/mac0470 $</span>
+      <p class="subtitle">MAC0470/5856 · Desenvolvimento de Software Livre · Prof. Paulo Meirelles</p>
+    </div>
+  </header>
+  <main>
+    <article>
+      <div class="post-header">
+        <a href="../index.html" class="back-link">← voltar para o índice</a>
+        <div class="post-meta">
+          <span class="date">2025-04-14</span>
+          <span class="tag">aula 07/08</span>
+        </div>
+        <h1>Aula 07/08 — anatomia do driver IIO: estudando o iio_simple_dummy</h1>
+      </div>
+      <div class="post-content">
+        <h2># contexto</h2>
+        <p>
+          Nas aulas 7 e 8, mergulhamos no subsistema Industrial I/O (IIO) do kernel Linux, usando o driver
+          <code>iio_simple_dummy</code> como objeto de estudo. A proposta era entender como drivers de sensores
+          são estruturados — e foi uma das experiências mais interessantes que tive até agora no curso.
+        </p>
+        <p>
+          Minha abordagem foi a que o tutorial sugere: primeiro identificar as funções de inicialização,
+          depois entender os elementos essenciais do subsistema, e por fim dissecar as funções de leitura
+          e escrita.
+        </p>
+
+        <h2># o struct iio_chan_spec e os canais</h2>
+        <p>
+          O ponto de partida foi entender o conceito de canal no IIO. Um dispositivo IIO pode ter um ou
+          mais canais — um acelerômetro, por exemplo, pode ter três canais representando os eixos X, Y e Z.
+          Cada canal é descrito pelo <code>struct iio_chan_spec</code>, que é massivamente configurável.
+        </p>
+        <p>
+          Aqui tive minha primeira dificuldade: o campo <code>.info_mask_separate</code> versus
+          <code>.info_mask_shared_by_type</code> me confundiu bastante no começo. Fiquei um tempo
+          relendo o código do <code>iio_dummy_channels</code> até entender que o primeiro define atributos
+          exclusivos de cada canal, enquanto o segundo define atributos compartilhados entre canais do
+          mesmo tipo. Depois que esse conceito clicou, o resto do array fez muito mais sentido.
+        </p>
+        <p>
+          O campo <code>.scan_index</code> também merece atenção — ele organiza a ordem dos canais
+          habilitados dentro do buffer e precisa ser único. Quando vi o valor
+          <code>DUMMY_INDEX_VOLTAGE_0</code> ali, precisei ir até o header <code>iio_simple_dummy.h</code>
+          pra entender de onde vinha. Esse tipo de coisa — seguir a trilha pelo código — é algo que estou
+          aprendendo a fazer com mais naturalidade.
+        </p>
+
+        <h2># as funções read_raw e write_raw</h2>
+        <p>
+          A <code>iio_dummy_read_raw()</code> usa o argumento <code>mask</code> para identificar qual
+          atributo do canal está sendo lido, e depois um <code>switch</code> no <code>chan->type</code>
+          para determinar de qual parte do estado interno (<code>iio_dummy_state</code>) extrair o valor.
+          O mutex aparece logo na entrada da função, protegendo a leitura do estado.
+        </p>
+        <p>
+          A <code>iio_dummy_write_raw()</code> é estruturalmente parecida, mas com uma observação
+          interessante: o mutex só é adquirido no momento de escrever no estado — a validação do tipo
+          de canal acontece antes. Pequeno detalhe, mas que diz muito sobre como pensar criticamente
+          onde começa e termina a seção crítica.
+        </p>
+        <p>
+          Tive um momento de confusão aqui também: por alguns minutos achei que o
+          <code>ret = -EINVAL</code> no <code>default</code> do switch de <code>read_raw</code> era um
+          bug, porque ele não retornava imediatamente. Fui verificar e percebi que o
+          <code>mutex_unlock</code> era centralizado no <code>goto out</code> — o padrão clássico que
+          o próprio tutorial explica. Depois de semanas estudando o <code>guard(mutex)</code>, ver o
+          padrão antigo em ação no código de exemplo foi um belo fechamento de ciclo.
+        </p>
+
+        <h2># a função probe</h2>
+        <p>
+          A <code>iio_dummy_probe()</code> conecta tudo. Ela aloca memória para o <code>iio_dev</code>,
+          inicializa o estado privado via <code>iio_priv()</code>, e registra o dispositivo. Ver esse
+          fluxo completo — da alocação até o registro — ajudou a entender por que as peças que estudamos
+          antes existem da forma que existem.
+        </p>
+
+        <h2># conclusão</h2>
+        <p>
+          No geral, as aulas 7 e 8 foram densas mas muito recompensadoras. O <code>iio_simple_dummy</code>
+          é um excelente material de estudo justamente porque foi feito pra isso — os comentários no
+          código são excepcionais. No fim, consegui acompanhar tudo e sair com uma visão bem mais clara
+          de como drivers de sensores são construídos no kernel.
+        </p>
+      </div>
+    </article>
+  </main>
+  <footer>
+    <p><a href="https://github.com" target="_blank">github.io</a></p>
+  </footer>
+</body>
+</html>
