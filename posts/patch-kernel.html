@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 09/10 — MAC0470/5856</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="prompt">~/mac0470 $</span>
+      <p class="subtitle">MAC0470/5856 · Desenvolvimento de Software Livre · Prof. Paulo Meirelles</p>
+    </div>
+  </header>
+  <main>
+    <article>
+      <div class="post-header">
+        <a href="../index.html" class="back-link">← voltar para o índice</a>
+        <div class="post-meta">
+          <span class="date">2025-04-14</span>
+          <span class="tag">aula 09/10</span>
+        </div>
+        <h1>Aula 09/10 — enviando meu primeiro patch para o kernel Linux</h1>
+      </div>
+      <div class="post-content">
+        <h2># contexto</h2>
+        <p>
+          Essa aula foi sobre colocar a mão na massa de verdade: preparar e enviar um patch para o
+          subsistema IIO do kernel Linux. A mudança em si foi simples — substituir chamadas
+          <code>mutex_lock()</code> e <code>mutex_unlock()</code> pelo macro <code>guard(mutex)()</code>
+          no driver <code>m62332</code>, usando os Scope-based Cleanup Helpers do kernel.
+        </p>
+
+        <h2># a batalha com o email</h2>
+        <p>
+          A parte técnica do patch foi tranquila. O que me tomou mais tempo foi configurar o
+          <code>git send-email</code> para funcionar com o email da USP. O problema central é que
+          o Perl usado pelo <code>git send-email</code> não possui suporte nativo ao mecanismo
+          <code>OAUTHBEARER</code> — o módulo simplesmente não existe no CPAN.
+        </p>
+        <p>
+          A solução foi usar o <code>msmtp</code> como cliente SMTP no lugar do envio direto pelo
+          Perl. O <code>msmtp</code> tem suporte nativo a OAuth2, então bastou configurá-lo para
+          buscar o token via <code>git-credential-gmail</code> e apontar o
+          <code>git send-email</code> para ele com <code>sendmailcmd = msmtp</code>. Depois disso,
+          funcionou perfeitamente.
+        </p>
+
+        <h2># resultado</h2>
+        <p>
+          O patch passou pelo CI interno do curso sem erros e foi enviado para os mantenedores do
+          subsistema IIO e para a mailing list <code>linux-iio@vger.kernel.org</code>. Primeira
+          contribuição real ao kernel Linux feita.
+        </p>
+      </div>
+    </article>
+  </main>
+  <footer>
+    <p><a href="https://github.com" target="_blank">github.io</a></p>
+  </footer>
+</body>
+</html>
